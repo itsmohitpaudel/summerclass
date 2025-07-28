@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     'summerclass-crjx.onrender.com',  # Render URL
     '127.0.0.1',                      # for local development
     'localhost',                     # optional
+    'www.deploying.xyz'
 ]
 
 
