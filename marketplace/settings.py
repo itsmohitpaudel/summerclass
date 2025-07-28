@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-08pbp6si@o=lhc%f8s4o)2pp$7e_1@2=heirxu$)%eio9n50&p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['summerclass-aemv.onrender.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -83,18 +84,22 @@ WSGI_APPLICATION = 'marketplace.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'marketplace',  # your DB name
-        'USER': 'root',
-        'PASSWORD': '',         # or your actual password
-        # 'HOST': 'localhost',    # or 127.0.0.1
-        'HOST': '127.0.0.1',    # or 127.0.0.1
-        'PORT': '3306',
-        'OPTIONS': {
-            'unix_socket': '/tmp/mysql.sock',
-        },
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'marketplace',  # your DB name
+    #     'USER': 'root',
+    #     'PASSWORD': '',         # or your actual password
+    #     # 'HOST': 'localhost',    # or 127.0.0.1
+    #     'HOST': '127.0.0.1',    # or 127.0.0.1
+    #     'PORT': '3306',
+    #     'OPTIONS': {
+    #         'unix_socket': '/tmp/mysql.sock',
+    #     },
+    # }
+    
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
 

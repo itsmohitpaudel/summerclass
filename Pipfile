@@ -6,10 +6,13 @@ name = "pypi"
 [packages]
 django-jazzmin = "*"
 pillow = "*"
-django = "*"
-gunicorn = "*"
 whitenoise = "*"
 mysqlclient = "*"
+django = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
+python-decouple = "*"
+gunicorn = "*"
 
 [dev-packages]
 
