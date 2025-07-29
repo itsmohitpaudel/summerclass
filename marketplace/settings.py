@@ -17,6 +17,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -102,8 +103,14 @@ DATABASES = {
     #     },
     # }
     
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+    # 'default': dj_database_url.config(
+    #     default=os.environ.get('DATABASE_URL')
+    # )
+    
+    'default': dj_database_url.parse(
+        DATABASE_URL,
+        conn_max_age=600,           # Optional: keeps connections alive
+        ssl_require=not DEBUG       # Require SSL only in production (Render)
     )
 }
 
